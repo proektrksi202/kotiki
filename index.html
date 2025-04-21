@@ -160,7 +160,7 @@
 <h1>Смешные картинки котов</h1>
 
 <div id="home" class="cat-container">
-    <!-- Категория котов будет загружаться через JavaScript -->
+    <!-- Контейнер для котиков, которые будут загружаться через JS -->
 </div>
 
 <div id="random" class="cat-container" style="display:none;">
@@ -185,6 +185,7 @@
 <script>
     let page = 1;
 
+    // Функция для загрузки котиков с API
     function loadCats() {
         fetch(`https://api.thecatapi.com/v1/images/search?limit=6&page=${page}&order=Desc`)
             .then(response => response.json())
@@ -211,6 +212,7 @@
             .catch(error => console.error("Error loading cats:", error));
     }
 
+    // Функция для переключения вкладок
     function showTab(tab) {
         document.getElementById("home").style.display = "none";
         document.getElementById("random").style.display = "none";
@@ -225,12 +227,14 @@
         }
     }
 
+    // Бесконечная прокрутка
     window.onscroll = function() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
             loadCats();
         }
     };
 
+    // Начальная загрузка котиков
     loadCats();
 </script>
 
