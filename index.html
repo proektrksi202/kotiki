@@ -88,12 +88,6 @@
       width: 100%;
       display: block;
     }
-    .caption {
-      padding: 10px;
-      font-weight: bold;
-      text-align: center;
-      background: #fffbe6;
-    }
     .fact-box {
       margin: 20px auto;
       max-width: 600px;
@@ -162,16 +156,8 @@
 </footer>
 
 <script>
-  const captions = [
-    "Черный котик", "Рыжий котик", "Белый пушистик", "Серый мурлыка", "Пятнистый кот", "Котёнок-улыбашка", "Кот с большими глазами", "Ушастый кот"
-  ];
-
   let page = 1;
   let allCats = [];
-
-  function getRandomCaption() {
-    return captions[Math.floor(Math.random() * captions.length)];
-  }
 
   function loadCats() {
     fetch(`https://api.thecatapi.com/v1/images/search?limit=6&page=${page}`)
@@ -184,15 +170,9 @@
           const img = document.createElement('img');
           img.src = cat.url;
 
-          const caption = document.createElement('div');
-          caption.className = 'caption';
-          const text = getRandomCaption();
-          caption.textContent = text;
-
           card.appendChild(img);
-          card.appendChild(caption);
           document.getElementById('catContainer').appendChild(card);
-          allCats.push({ element: card, text: text.toLowerCase() });
+          allCats.push({ element: card });
         });
         page++;
       });
@@ -201,7 +181,7 @@
   function searchCats() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     allCats.forEach(cat => {
-      cat.element.style.display = cat.text.includes(query) ? "block" : "none";
+      cat.element.style.display = query ? "none" : "block"; // скрываем всё при поиске, но нет подписей
     });
   }
 
@@ -217,22 +197,26 @@
         const img = document.createElement('img');
         img.src = data[0].url;
 
-        const caption = document.createElement('div');
-        caption.className = 'caption';
-        caption.textContent = getRandomCaption();
-
         card.appendChild(img);
-        card.appendChild(caption);
         randomDiv.appendChild(card);
       });
   }
 
   function loadFact() {
-    fetch("https://meowfacts.herokuapp.com/")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("factBox").textContent = data.data[0];
-      });
+    const facts = [
+      "Кошки спят около 70% своей жизни.",
+      "Кошки могут прыгать на высоту до 6 раз выше своего роста.",
+      "У кошек 32 мышцы в каждом ухе.",
+      "Кошки не чувствуют вкус сладкого.",
+      "Первой в космосе была кошка по имени Фелисетт.",
+      "У кошек уникальный отпечаток носа — как у человека отпечаток пальца.",
+      "Кошки мяукают только для общения с людьми.",
+      "Самая старая кошка прожила 38 лет.",
+      "Кошки могут издавать около 100 различных звуков.",
+      "В Древнем Египте кошек боготворили."
+    ];
+    const randomFact = facts[Math.floor(Math.random() * facts.length)];
+    document.getElementById("factBox").textContent = randomFact;
   }
 
   function showTab(tab) {
@@ -248,7 +232,6 @@
     }
   };
 
-  // Запускаем загрузку при старте
   loadCats();
 </script>
 
