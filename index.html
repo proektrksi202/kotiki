@@ -147,9 +147,9 @@
 <header>
     <h2 style="margin: 0; color: #ff6600;">КотяШоу</h2>
     <nav>
-        <a href="#">Главная</a>
-        <a href="#">Случайный кот</a>
-        <a href="#">Факт о котах</a>
+        <a href="#" onclick="showTab('home')">Главная</a>
+        <a href="#" onclick="showTab('random')">Случайный кот</a>
+        <a href="#" onclick="showTab('facts')">Факт о котах</a>
     </nav>
 </header>
 
@@ -159,29 +159,19 @@
 
 <h1>Смешные картинки котов</h1>
 
-<div class="cat-container">
-    <div class="cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Cat_poster_1.jpg" alt="Кот 1">
-        <div class="caption">Когда узнал, что завтра понедельник</div>
-    </div>
+<div id="home" class="cat-container">
+    <!-- Категория котов будет загружаться через JavaScript -->
+</div>
 
+<div id="random" class="cat-container" style="display:none;">
     <div class="cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg" alt="Кот 2">
-        <div class="caption">Я: сделаю всё завтра. Завтра: *пришло*</div>
-    </div>
-
-    <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80" alt="Кот 3">
-        <div class="caption">Когда случайно открыл фронталку</div>
+        <img src="https://placekitten.com/400/300" alt="Random Cat">
+        <div class="caption">Случайный кот</div>
     </div>
 </div>
 
-<div style="text-align: center;">
-    <button class="btn-add">Добавить своего котика</button>
-</div>
-
-<div class="fact-box">
-    Знаешь ли ты? У кошек около 20 мускулов, контролирующих движения ушей!
+<div id="facts" class="fact-box" style="display:none;">
+    Знаешь ли ты? Кошки могут прыгать на 5 раз больше своей длины!
 </div>
 
 <!-- Футер с автором -->
@@ -191,6 +181,58 @@
     <a href="#" style="color: #555;">Контакты</a> <br>
     Сайт сделан Демьяненко Никитой
 </footer>
+
+<script>
+    let page = 1;
+
+    function loadCats() {
+        fetch(`https://api.thecatapi.com/v1/images/search?limit=6&page=${page}&order=Desc`)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("home");
+                data.forEach(cat => {
+                    const catCard = document.createElement("div");
+                    catCard.classList.add("cat-card");
+
+                    const img = document.createElement("img");
+                    img.src = cat.url;
+                    img.alt = "Кот";
+
+                    const caption = document.createElement("div");
+                    caption.classList.add("caption");
+                    caption.textContent = "Милый котик";
+
+                    catCard.appendChild(img);
+                    catCard.appendChild(caption);
+                    container.appendChild(catCard);
+                });
+                page++;
+            })
+            .catch(error => console.error("Error loading cats:", error));
+    }
+
+    function showTab(tab) {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("random").style.display = "none";
+        document.getElementById("facts").style.display = "none";
+
+        if (tab === 'home') {
+            document.getElementById("home").style.display = "flex";
+        } else if (tab === 'random') {
+            document.getElementById("random").style.display = "flex";
+        } else if (tab === 'facts') {
+            document.getElementById("facts").style.display = "block";
+        }
+    }
+
+    window.onscroll = function() {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            loadCats();
+        }
+    };
+
+    loadCats();
+</script>
 
 </body>
 </html>
