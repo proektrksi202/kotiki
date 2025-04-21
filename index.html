@@ -1,241 +1,275 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КотяШоу</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fceabb, #f8b500);
-            background-attachment: fixed;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КотяШоу</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      background-attachment: fixed;
+    }
 
-        header {
-            background-color: #fff;
-            padding: 15px 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    header {
+      background-color: #fff;
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            font-size: 14px;
-        }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 30px;
-            margin-top: 20px;
-            color: #ff6600;
-            text-shadow: 1px 1px 2px #fff;
-        }
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 20px;
+      color: #ff6600;
+      text-shadow: 1px 1px 2px #fff;
+    }
 
-        .cat-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px auto;
-            max-width: 1200px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
+    .cat-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1200px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
 
-        .cat-card {
-            border-radius: 15px;
-            padding: 10px;
-            width: 90%;
-            max-width: 300px;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .cat-card {
+      border-radius: 15px;
+      padding: 10px;
+      width: 90%;
+      max-width: 300px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .cat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
 
-        .cat-card img {
-            width: 100%;
-            border-radius: 12px;
-        }
+    .cat-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
 
-        .caption {
-            margin-top: 12px;
-            font-weight: 600;
-            color: #444;
-            font-size: 16px;
-        }
+    .caption {
+      margin-top: 12px;
+      font-weight: 600;
+      color: #444;
+      font-size: 16px;
+    }
 
-        .fact-box {
-            margin: 30px auto;
-            max-width: 90%;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            color: #333;
-            text-align: center;
-        }
+    .fact-box {
+      margin: 30px auto;
+      max-width: 90%;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #333;
+      text-align: center;
+    }
 
-        footer {
-            margin-top: 40px;
-            background-color: #fff4cc;
-            padding: 20px;
-            text-align: center;
-            color: #555;
-            font-size: 14px;
-        }
+    footer {
+      margin-top: 40px;
+      background-color: #fff4cc;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
 
-        .btn-add {
-            display: inline-block;
-            margin: 20px auto;
-            padding: 12px 25px;
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .btn-add {
+      display: inline-block;
+      margin: 20px auto 0;
+      padding: 12px 25px;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .btn-add:hover {
-            background-color: #e65c00;
-        }
+    .btn-add:hover {
+      background-color: #e65c00;
+    }
 
-        input[type="text"] {
-            padding: 10px 20px;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 20px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
+    input[type="text"] {
+      padding: 10px 20px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-        @media (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 5px 0;
-            }
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 5px 0;
+      }
 
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-            h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h2 style="margin: 0; color: #ff6600;">КотяШоу</h2>
-    <nav>
-        <a href="#" onclick="showTab('home')">Главная</a>
-        <a href="#" onclick="showTab('random')">Случайный кот</a>
-        <a href="#" onclick="showTab('facts')">Факт о котах</a>
-    </nav>
+  <h2 style="margin: 0; color: #ff6600;">КотяШоу</h2>
+  <nav>
+    <a onclick="showTab('home')">Главная</a>
+    <a onclick="showTab('random')">Случайный кот</a>
+    <a onclick="showTab('facts')">Факт о котах</a>
+  </nav>
 </header>
 
 <div style="text-align: center; margin: 20px;">
-    <input type="text" placeholder="Поиск по котикам...">
+  <input type="text" placeholder="Поиск по котикам...">
 </div>
 
 <h1>Смешные картинки котов</h1>
 
-<div id="home" class="cat-container">
-    <!-- Контейнер для котиков, которые будут загружаться через JS -->
-</div>
+<!-- Главная -->
+<div id="home" class="cat-container"></div>
 
-<div id="random" class="cat-container" style="display:none;">
-    <div class="cat-card">
-        <img src="https://placekitten.com/400/300" alt="Random Cat">
-        <div class="caption">Случайный кот</div>
-    </div>
-</div>
+<!-- Случайный кот -->
+<div id="random" class="cat-container" style="display:none;"></div>
 
+<!-- Факты -->
 <div id="facts" class="fact-box" style="display:none;">
-    Знаешь ли ты? Кошки могут прыгать на 5 раз больше своей длины!
+  <div id="fact-text">Факт загружается...</div>
+  <button onclick="generateCatFact()" class="btn-add">Обновить факт</button>
 </div>
 
-<!-- Футер с автором -->
+<!-- Футер -->
 <footer>
-    &copy; 2025 КотяШоу. Все права мяу. <br>
-    <a href="#" style="color: #555;">О сайте</a> | 
-    <a href="#" style="color: #555;">Контакты</a> <br>
-    Сайт сделан Демьяненко Никитой
+  &copy; 2025 КотяШоу. Все права мяу. <br>
+  Сайт сделан Демьяненко Никитой
 </footer>
 
 <script>
-    let page = 1;
+  let page = 1;
 
-    // Функция для загрузки котиков с API
-    function loadCats() {
-        fetch(`https://api.thecatapi.com/v1/images/search?limit=6&page=${page}&order=Desc`)
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById("home");
-                data.forEach(cat => {
-                    const catCard = document.createElement("div");
-                    catCard.classList.add("cat-card");
+  function loadCats() {
+    fetch(`https://api.thecatapi.com/v1/images/search?limit=6&page=${page}&order=Desc`)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("home");
+        data.forEach(cat => {
+          const card = document.createElement("div");
+          card.className = "cat-card";
 
-                    const img = document.createElement("img");
-                    img.src = cat.url;
-                    img.alt = "Кот";
+          const img = document.createElement("img");
+          img.src = cat.url;
+          img.alt = "Котик";
 
-                    const caption = document.createElement("div");
-                    caption.classList.add("caption");
-                    caption.textContent = "Милый котик";
+          const caption = document.createElement("div");
+          caption.className = "caption";
+          caption.textContent = "Милый котик";
 
-                    catCard.appendChild(img);
-                    catCard.appendChild(caption);
-                    container.appendChild(catCard);
-                });
-                page++;
-            })
-            .catch(error => console.error("Error loading cats:", error));
+          card.appendChild(img);
+          card.appendChild(caption);
+          container.appendChild(card);
+        });
+        page++;
+      });
+  }
+
+  function loadRandomCat() {
+    fetch("https://api.thecatapi.com/v1/images/search")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("random");
+        container.innerHTML = "";
+        const card = document.createElement("div");
+        card.className = "cat-card";
+
+        const img = document.createElement("img");
+        img.src = data[0].url;
+        img.alt = "Случайный котик";
+
+        const caption = document.createElement("div");
+        caption.className = "caption";
+        caption.textContent = "Случайный котик";
+
+        card.appendChild(img);
+        card.appendChild(caption);
+        container.appendChild(card);
+      });
+  }
+
+  function showTab(tab) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("random").style.display = "none";
+    document.getElementById("facts").style.display = "none";
+
+    if (tab === "home") {
+      document.getElementById("home").style.display = "flex";
+    } else if (tab === "random") {
+      document.getElementById("random").style.display = "flex";
+      loadRandomCat();
+    } else if (tab === "facts") {
+      document.getElementById("facts").style.display = "block";
+      generateCatFact();
     }
+  }
 
-    // Функция для переключения вкладок
-    function showTab(tab) {
-        document.getElementById("home").style.display = "none";
-        document.getElementById("random").style.display = "none";
-        document.getElementById("facts").style.display = "none";
+  const catFacts = [
+    "Кошки могут спать до 16 часов в день!",
+    "У кошек 32 мышцы в каждом ухе.",
+    "Кошки мурлыкают не только от удовольствия, но и чтобы успокоить себя.",
+    "Самая старая кошка дожила до 38 лет.",
+    "У кошек отличное ночное зрение, почти в 6 раз лучше, чем у человека.",
+    "Кошки могут слышать ультразвук, который человек не улавливает.",
+    "Отпечаток носа у каждой кошки уникален, как отпечатки пальцев у людей.",
+    "Кошки могут прыгать на высоту, в 5 раз превышающую их рост.",
+    "Кошка может издавать более 100 разных звуков, в отличие от собаки — около 10."
+  ];
 
-        if (tab === 'home') {
-            document.getElementById("home").style.display = "flex";
-        } else if (tab === 'random') {
-            document.getElementById("random").style.display = "flex";
-        } else if (tab === 'facts') {
-            document.getElementById("facts").style.display = "block";
-        }
+  function generateCatFact() {
+    const randomIndex = Math.floor(Math.random() * catFacts.length);
+    document.getElementById("fact-text").textContent = catFacts[randomIndex];
+  }
+
+  window.onscroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+      loadCats();
     }
+  };
 
-    // Бесконечная прокрутка
-    window.onscroll = function() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
-            loadCats();
-        }
-    };
-
-    // Начальная загрузка котиков
-    loadCats();
+  // Первичная загрузка
+  loadCats();
 </script>
 
 </body>
